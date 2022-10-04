@@ -1,9 +1,9 @@
 name: Techtrends - Pakage with Docker
 on:
   push:
-    branches: ["main"]
-  pull:
-    branches: ["main"]
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 job:
   docker:
