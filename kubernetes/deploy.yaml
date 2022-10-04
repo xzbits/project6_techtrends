@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: techtrends
+  labels:
+    app: techtrends
+  namespace: sandbox
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: techtrends
+    strategy:
+      rollingUpdate:
+        maxSurges: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        labels:
+          app: techtrends
+      spec:
+        containers:
+          - image: 050305122021/techtrends:latest
+            imagePullPolicy: IfNotPresent
+            name: techtrends
+            resources:
+              request:
+                cpu: 250m
+                memory: 64Mi
+              limits:
+                cpu: 500m
+                memory: 128Mi
+            port:
+              - containerPort: 3111
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 3111
+          redinessProbe:
+            httpGet:
+              path: /healthz
+              port: 3111
