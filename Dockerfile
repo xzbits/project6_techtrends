@@ -5,6 +5,7 @@ EXPOSE 3111
 COPY . /app
 
 RUN pip install -r requirements.txt
-RUN python /techtrends/init_db.py
+RUN cd techtrends
+RUN python init_db.py
 
-CMD ["python", "/techtrends/app.py"]
+CMD ["python", "app.py"]
