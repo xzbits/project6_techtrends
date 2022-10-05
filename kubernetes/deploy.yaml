@@ -5,7 +5,6 @@ metadata:
   labels:
     app: techtrends
   namespace: sandbox
-
 spec:
   replicas: 1
   selector:
@@ -13,7 +12,7 @@ spec:
       app: techtrends
     strategy:
       rollingUpdate:
-        maxSurges: 25%
+        maxSurge: 25%
         maxUnavailable: 25%
       type: RollingUpdate
     template:
@@ -26,19 +25,19 @@ spec:
             imagePullPolicy: IfNotPresent
             name: techtrends
             resources:
-              request:
+              requests:
                 cpu: 250m
                 memory: 64Mi
               limits:
                 cpu: 500m
                 memory: 128Mi
-            port:
+            ports:
               - containerPort: 3111
           livenessProbe:
             httpGet:
               path: /healthz
               port: 3111
-          redinessProbe:
+          readinessProbe:
             httpGet:
               path: /healthz
               port: 3111

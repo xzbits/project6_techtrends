@@ -4,10 +4,10 @@ metadata:
   data:
     name: techtrends
     namespace: sandbox
-  spec:
-    - ports: 4111
-      protocol: TCP
-      targetPort: 3111
-    selector:
-      app: techtrends
-    type: ClusterIP
+spec:
+  - ports: 4111
+    protocol: TCP
+    targetPort: 3111
+  selector:
+    app: techtrends
+  type: ClusterIP
