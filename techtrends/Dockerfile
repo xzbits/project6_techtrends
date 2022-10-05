@@ -2,7 +2,7 @@ FROM python:3.8.14-slim
 
 WORKDIR /app
 EXPOSE 3111
-COPY templates /app
+COPY . /app
 
 RUN pip install -r requirements.txt
 RUN cd techtrends
