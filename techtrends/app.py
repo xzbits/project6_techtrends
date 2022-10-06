@@ -76,7 +76,7 @@ def create():
 
 
 # Define /metrics endpoint
-@app.route("/metrics", methods=['GET'])
+@app.route("/metrics")
 def metrics():
     metrics_response = {"db_connection_count": count_db_conn(), "post_count": count_post()}
     response = app.response_class(json.dumps(metrics_response), status=200, mimetype="application/json")
@@ -85,7 +85,7 @@ def metrics():
 
 
 # Define /healthz endpoint
-@app.route("/healthz", methods=['GET'])
+@app.route("/healthz")
 def health():
     count_post_query = """
     SELECT COUNT(*) FROM posts;
