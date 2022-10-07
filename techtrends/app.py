@@ -95,7 +95,7 @@ def health():
     try:
         db_conn = get_db_connection()
         db_conn.execute(count_post_query).fetchone()
-        response = app.response_class(json.dumps(healthy_response), status=200, mimetypes="application/json")
+        response = app.response_class(json.dumps(healthy_response), status=200, mimetype="application/json")
         db_conn.close()
     except sqlite3.OperationalError:
         response = app.response_class(json.dumps(unhealthy_response), status=500, mimetype="application/json")
