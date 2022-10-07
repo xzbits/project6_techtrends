@@ -123,7 +123,5 @@ def count_db_conn():
 
 # start the application on port 3111
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.DEBUG,
-                        format='%(levelname)s:%(filename)s:%(asctime)s',
-                        datefmt='%d/%m/%Y, %H:%M:%S')
+    logging.basicConfig(level=logging.DEBUG)
     app.run(host='0.0.0.0', port='3111')
